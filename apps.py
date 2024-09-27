@@ -1,26 +1,23 @@
 import pandas as pd
-
-# read
-data_df = pd.read_csv("creditcard.csv")
-#print("Credit Card Fraud rows:", data_df.shape[0], "Colomns:", data_df.shape[1])
-
-#darstellung der 5te erste Zeile
-d_head = data_df.head()
-#print(d_head)
-
-#darstellung der 5te letzte Zeile
-d_tail = data_df.tail()
-#print(d_tail)
-
-#look into more details to the data.
-d_descrip = data_df.describe()
-#print(d_descrip)
-
-# check if there is any missing data
-sum = data_df.isnull().sum()
-count = data_df.isnull().count()
-percent = sum / count*100
-join = pd.concat(objs=[sum, percent], axis = 1, keys= ['sum', 'percet'])
-print(join)
-transp = join.transpose()
-print(transp)
+from check_data import CheckData
+class App:
+    def __init__(self):
+        self.check_data = CheckData() # erstellen ein Objekt der CheckData-Klasse
+    
+    '''Auf der CheckData-Methode und Ausgabe der Ergebnisse'''
+    def main(self):
+        print("erste 5 Zeile:")
+        print(self.check_data.see_first_5_row())
+        
+        print("letzte 5 Zeile:")
+        print(self.check_data.see_last_5_row())
+        
+        print("\nBeschreibung der Daten:")
+        print(self.check_data.look_inside())
+        
+        print("Überprüfung der fehlenden daten:")
+        print(self.check_data.check_missing_data())
+'''Ausführung der App-Klasse'''
+if __name__ == "__main__":
+    main = App() # Erstellung ein Main-Objekt
+    main.main() # Ausführung der main-Mathode
