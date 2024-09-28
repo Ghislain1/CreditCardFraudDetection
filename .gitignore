@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# ignore the csv-file, because to big
+creditcard.csv
+
 # C extensions
 *.so
 
