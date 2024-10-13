@@ -2,6 +2,9 @@ from check_data import CheckData
 from check_unbalanced_data import Check_Unbalanced_Data
 from credit_card import CreditCard
 from prediction import Prediction
+from dashboard import DashBoard
+import seaborn as sns
+import pandas as pd
 
 
 class App:
@@ -52,10 +55,17 @@ class App:
         credit_card.persistence_model()
         print(credit_card.make_predictions_by_joblib())
 
+    def view_dashboard_seaborn(self):
+        dash_board = DashBoard()
+        dash_board.show_data_info()
+        # dash_board.seaborn_view(x_column="Class")
+        dash_board.seaborn_view(x_column="V1", y_column="V6", hue_column="Class")
+
 
 """Ausführung der App-Klasse"""
 if __name__ == "__main__":
     app = App()  # Erstellung ein Main-Objekt
     # app.run()  # Ausführung der main-Mathode
     # app.call_prediction()
-    app.use_credit_card_class()
+    # app.use_credit_card_class()
+    app.view_dashboard_seaborn()
